@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Responsive Web Page</title>
+    <style>
+        #signup-section, #login-section, #user-dasboard{
+            display: none;
+        }
+        .active{
+            display: block !important;
+        }
+    </style>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+   <section id="signup-section" class="active">
+    <div id="signup-con">
+     <form id="create-user" method="POST">
+        <h3>Create a account</h3>
+ <label for="first-name">First Name:</label>
+        <input
+            type="text"
+            id="first-name"
+            name="first_name"
+            placeholder="Enter your first name"
+            required
+        >
+        <br>
+         <label for="last-name">Last Name:</label>
+        <input
+            type="text"
+            id="last-name"
+            name="last_name"
+            placeholder="Enter your last name"
+            required
+        >
+        <br>
+        
+        <label for="email">Email:</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+        >
+        <br>
+
+     
+        <label for="username">Username:</label>
+        <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+        >
+        <br>
+    
+        
+
+
+<label>Gender:</label>
+
+<input type="radio" id="male" name="gender" value="male" required>
+<label for="male">Male</label>
+
+<input type="radio" id="female" name="gender" value="female">
+<label for="female">Female</label>
+
+<input type="radio" id="other" name="gender" value="other">
+<label for="other">Other</label>
+
+<br>
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="">Select Role</option>
+            <option value="admin">Admin</option>
+            <option value="operations">Operations</option>
+            <option value="sales">Sales</option>
+        </select>
+        <br>
+        <label for="password">Password:</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+        >
+        <br>
+
+        <button type="submit">Create User</button>
+        <p id="signup-error-msg"></p>
+
+        <div class="alread-singup">
+            <a id="login-redirect" href="javascript:void(0)">Already registered?</a>
+        </div>
+
+    </form>
+</div>
+   </section>
+
+   <section id="login-section">
+    <div id="login-con">
+    <form id="login" method="POST">
+        <h3>sign in with email</h3>
+    <label for="email">Email:</label>
+    <input
+        type="email"
+        id="login-email"
+        name="login-email"
+        placeholder="Enter your email"
+        required
+    >
+
+    <br><br>
+
+    <label for="password">Password:</label>
+    <input
+        type="password"
+        id="login-password"
+        name="login-password"
+        placeholder="Enter your password"
+        required
+    >
+
+    <br><br>
+
+    <button type="submit">Login</button>
+    <p>Don't have an account? <a id="signup-redirect" href="javascript:void(0)">Sign Up</a></p>
+</form>
+</div>
+   </section>
+
+   <section id="user-dasboard">
+     <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+          <th>Username</th>
+              <th>Email</th>
+            <th>Gender</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody id="user-list">
+       
+       
+
+    </tbody>
+</table>
+   </section>
+<script src="./index.js"></script>
+</body>
+</html>
