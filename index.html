@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Responsive Web Page</title>
+    <title>HTML Assignment 2</title>
     <style>
         #signup-section, #login-section, #user-dasboard{
             display: none;
@@ -23,16 +23,16 @@
    <section id="signup-section" class="active">
     <div id="signup-con">
      <form id="create-user" method="POST">
-        <h3>Create a account</h3>
+        <h3>Create account</h3>
  <label for="first-name">First Name:</label>
         <input
             type="text"
             id="first-name"
             name="first_name"
+            minlength="3"
             placeholder="Enter your first name"
             required
         >
-        <br>
          <label for="last-name">Last Name:</label>
         <input
             type="text"
@@ -41,8 +41,6 @@
             placeholder="Enter your last name"
             required
         >
-        <br>
-        
         <label for="email">Email:</label>
         <input
             type="email"
@@ -51,22 +49,18 @@
             placeholder="Enter your email"
             required
         >
-        <br>
-
-     
         <label for="username">Username:</label>
         <input
             type="text"
             id="username"
             name="username"
             placeholder="Enter your username"
+            minlength="3"
+    maxlength="20"
+    pattern="[A-Za-z0-9_]+"
+    title="Username must be 3-20 characters and contain only letters, numbers, and underscores"
             required
         >
-        <br>
-    
-        
-
-
 <label>Gender:</label>
 
 <input type="radio" id="male" name="gender" value="male" required>
@@ -77,8 +71,6 @@
 
 <input type="radio" id="other" name="gender" value="other">
 <label for="other">Other</label>
-
-<br>
         <label for="role">Role:</label>
         <select id="role" name="role" required>
             <option value="">Select Role</option>
@@ -86,7 +78,6 @@
             <option value="operations">Operations</option>
             <option value="sales">Sales</option>
         </select>
-        <br>
         <label for="password">Password:</label>
         <input
             type="password"
@@ -95,8 +86,6 @@
             placeholder="Enter your password"
             required
         >
-        <br>
-
         <button type="submit">Create User</button>
         <p id="signup-error-msg"></p>
 

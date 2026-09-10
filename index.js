@@ -147,13 +147,25 @@ function fun_create_user(e) {
         err_con.innerHTML = "Password is required";
         return;
     }
+    if (!/^[A-Za-z0-9_]{3,20}$/.test(username)) {
+err_con.innerHTML = "sername must be 3-20 characters and contain only letters, numbers, and underscores.";
+return;
+    }
 
-    const existing_user = users.find(function(user) {
+    const existing_user = users.find((user) => {
         return user.email === email.trim();
     });
 
      if (existing_user) {
         err_con.innerHTML = "This email is already registered";
+        return;
+    }
+
+    const exit_username = users.find((user) => {
+          return user.username == username;
+    })
+    if (exit_username) {
+        err_con.innerHTML = "This username is already registered";
         return;
     }
     console.log(first_name);
@@ -173,8 +185,11 @@ function fun_create_user(e) {
     };
 
     users.push(user);
-
-    console.log(users);
+    create_user.reset();
+   alert("User account created successfully!");
+   console.log(users);
+    display_login_screen();
+    
 }
 
 function fun_login_user(e){
