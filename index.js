@@ -1,6 +1,6 @@
 
 
-const users = [
+const users = localStorage.getItem("users-items") ? JSON.parse(localStorage.getItem("users-items")) : [
     {
         id: 1,
         first_name: "Abdul",
@@ -82,6 +82,8 @@ const users = [
         password: "david123"
     }
 ];
+
+localStorage.setItem("users-items", JSON.stringify(users));
 
 const create_user = document.getElementById("create-user");
 const login_user = document.getElementById("login");
@@ -189,6 +191,7 @@ return;
     create_user.reset();
    alert("User account created successfully!");
    console.log(users);
+   localStorage.setItem("users-items", JSON.stringify(users));
     display_login_screen();
     
 }
