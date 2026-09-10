@@ -196,9 +196,11 @@ function fun_login_user(e){
  e.preventDefault();
  const email = document.getElementById("login-email").value;
  const password = document.getElementById("login-password").value;
-
+const err_con = document.getElementById("login-error-msg");
+err_con.innerHTML = "";
  if(email.trim() == '' || password.trim() == ''){
-    alert("Email and password required");
+   // alert("Email and password required");
+    err_con.innerHTML = "Email and password required";
     return
  }
 
@@ -207,17 +209,20 @@ function fun_login_user(e){
  })
 console.log(check_user);
  if(!check_user){
-    alert("User not found");
+    //alert("User not found");
+    err_con.innerHTML = "User not found";
     return
  }
 
  if(check_user.password !== password)
  {
-    alert("Password does not match");
+   // alert("Password does not match");
+    err_con.innerHTML = "Password does not match";
     return
  }
 
  alert("login successfuly");
+ login_user.reset();
  fun_display_users(check_user);
  
 }
