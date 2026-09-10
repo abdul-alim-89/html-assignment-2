@@ -1,4 +1,5 @@
 
+
 const users = [
     {
         id: 1,
@@ -229,8 +230,8 @@ console.log(check_user);
 
 function fun_display_users(user){
 let content = '';
-
-let filter_users = fun_filter_users(user.role);
+const role = user.role;
+let filter_users = fun_filter_users(role);
 
 
 console.log(filter_users);
@@ -243,22 +244,25 @@ filter_users.map((user)=>{
             <td>${user.last_name}</td>
             <td>${user.username}</td>
             <td>${user.email}</td>
-            <td>${user.gender}</td>
-            <td>${user.role}</td>
-            <td>
-                <a href="/users/1/edit">
-                    <button type="button">Edit</button>
-                </a>
+            <td>${user.gender.charAt(0).toUpperCase() + user.gender.slice(1)}</td>
+            <td>${user.role.charAt(0).toUpperCase() + user.role.slice(1)}</td>`;
+            if(role == 'admin'){
+tr.innerHTML += `<td><button type="button">Edit</button>
 
-                <form action="/users/1/delete" method="POST" style="display: inline;">
-                    <button
-                        type="submit"
-                        onclick="return confirm('Are you sure you want to delete this user?')"
-                    >
+                    <button type="submit">
                         Delete
-                    </button>
-                </form>
-            </td>`;
+                    </button></td>`;
+            }
+            else if(role == 'operations' && user.role == 'sales'){
+                tr.innerHTML += `<td><button type="button">Edit</button>
+
+                    <button type="submit">Delete</button></td>`;
+            }
+            else if(role == 'sales'){
+                tr.innerHTML += '<td></td>';
+            }
+                    
+  
             user_list.appendChild(tr);
 });
 
@@ -272,7 +276,7 @@ function fun_filter_users(role){
         return users;
     }
     else if(role == 'operations'){
-        return users.filter((uesr)=>{
+        return users.filter((user)=>{
             return user.role != 'admin';
         })
     }
